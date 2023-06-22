@@ -17,11 +17,25 @@ public:
     }
 };
 
-void delete_at_head(Node *&head)
+// void delete_at_head(Node *&head)
+// {
+//     Node *deleteNode = head;
+//     head = head->next;
+//     delete deleteNode;
+//     head->prev = NULL;
+// }
+
+void delete_at_head(Node *&head, Node *&tail)
 {
+
     Node *deleteNode = head;
     head = head->next;
     delete deleteNode;
+    if (head == NULL)
+    {
+        tail = NULL;
+        return;
+    }
     head->prev = NULL;
 }
 
@@ -40,12 +54,25 @@ void delete_at_position(Node *head, int position)
     delete deleteNode;
 }
 
-void delete_at_tail(Node *&tail)
+// void delete_at_tail(Node *&tail)
+// {
+//     Node *deleteNode = tail;
+//     tail = tail->prev;
+//     delete deleteNode;
+
+//     tail->next = NULL;
+// }
+
+void delete_at_tail(Node *&head, Node *&tail)
 {
     Node *deleteNode = tail;
     tail = tail->prev;
     delete deleteNode;
-
+    if (tail == NULL)
+    {
+        head = NULL;
+        return;
+    }
     tail->next = NULL;
 }
 
@@ -109,9 +136,15 @@ int main()
     if (pos >= size(head))
         cout << "Invalid connection" << endl;
     else if (pos == 0)
-        delete_at_head(head);
+    {
+        // delete_at_head(head);
+        delete_at_head(head, tail);
+    }
     else if (pos == size(head) - 1)
-        delete_at_tail(tail);
+    {
+        // delete_at_tail(tail);
+        delete_at_tail(head, tail);
+    }
     else
         delete_at_position(head, pos);
 
