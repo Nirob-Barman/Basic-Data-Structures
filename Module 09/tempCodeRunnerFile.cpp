@@ -1,2 +1,0 @@
- = tail;
-    tail = tail->prev;
