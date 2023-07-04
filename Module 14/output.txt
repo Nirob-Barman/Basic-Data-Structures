@@ -1,0 +1,3 @@
+Popped element: 5
+Front element: 10
+Is queue empty? No
